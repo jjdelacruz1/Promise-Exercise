@@ -10,16 +10,31 @@ var urls = [
 
 function buildPromiseFromUrl (url){
   const aPromise = $.get(url)
-  console.log('a promise was created')
+  // console.log('a promise was created')
   return aPromise
 }
 
 const arrayOfPromises = urls.map(buildPromiseFromUrl)
 
 arrayOfPromises[0]
+  .then(function () {
+  console.log('one promise finished')
+  })
   .then(arrayOfPromises[1])
   .then(function () {
     console.log('two promises finished')
+  })
+  .then(arrayOfPromises[2])
+  .then(function () {
+    console.log('three promises finished')
+  })
+  .then(arrayOfPromises[3])
+  .then(function () {
+    console.log('four promises finished')
+  })
+  .then(arrayOfPromises[4])
+  .then(function () {
+    console.log('five promises finished')
   })
 
 Promise.all(arrayOfPromises)
@@ -28,4 +43,7 @@ Promise.all(arrayOfPromises)
     console.log(resultArray)
   })
 
+function addNumbers(x,y) {
+  
+}
 })
